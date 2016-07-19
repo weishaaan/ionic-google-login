@@ -5,18 +5,16 @@ var clientSecret = "U5y1mU-qpQPHZB02SvEtzm5r";
 
 
 var moraApp = angular.module('starter', ['ionic', 'ngCordova', 'ngCordovaOauth'])
-    .controller('LoginwithGoogle', function ($scope, $cordovaOauth, $state) {
+.controller('LoginwithGoogle', function ($scope, $cordovaOauth, $state) {
         $scope.LoginwithGoogle = function () {
             console.log("clicked");
             $cordovaOauth.google(clientId, ["email"]).then(function (result) {
                 alert("Auth Success..!!" + JSON.stringify(result));
 
 
-                accessToken = result.access_token;
-                alert("access token is "+ result.accessToken);
-                $location.path("/secure");    
-
-
+                //accessToken = result.access_token;
+                //alert("access token is "+ result.accessToken);
+                //$location.path("/secure");    
                 //alert('the state is ' + $state.current);
                 //$state.go('app.home');
                 //$window.location.href = '/views/home.html';
@@ -26,29 +24,9 @@ var moraApp = angular.module('starter', ['ionic', 'ngCordova', 'ngCordovaOauth']
                 alert("Auth Failed..!!" + error);
             });
         };
-    });
+    })
 
-moraApp.controller('test', function ($scope, $state) {
-    $scope.test = function () {
-        alert('the state is ' + $state.current);
-        $state.go('app.home');
-        //$window.location.href = '/views/home.html';
-        //$location.path("/views/home.html");
-        //alert('the state is '+$state.current);
-    };
-});
-
-moraApp.controller('SecureController', function ($scope) {
-    $scope.accessToken = accessToken;
-});
-
-moraApp.controller('AppCtrl', function ($scope) {
-
-});
-
-moraApp.controller('HomeCtrl', function ($scope) {
-
-});
+;
 
 
 
